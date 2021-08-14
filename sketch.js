@@ -1,6 +1,5 @@
 var s = function(sketch) {
     let c
-    let cX, cY
     let col = 150;
     let imgHeart;
     let imgWater;
@@ -24,6 +23,7 @@ var s = function(sketch) {
         fullHealth = 144
 
         imgHeart.resize(55, 55)
+        imgWater.resize(55, 70)
 
         c = sketch.createCanvas(window.innerWidth, windowHeight);
         c.position(0, 0, 'fixed');
@@ -47,6 +47,7 @@ var s = function(sketch) {
                 col = myHealth/100*180-30
         }
         sketch.HealthBar()
+        sketch.Water()
     };
     
     sketch.HealthBar = function() {
@@ -64,6 +65,9 @@ var s = function(sketch) {
          sketch.image(imgHeart, 5,  windowHeight-57);
          sketch.fill('white')
          sketch.text(Math.floor(myHealth+1)+'%', 34, windowHeight-30);
+    }
+    sketch.Water = function(){
+        sketch.image(imgWater, 50,  windowHeight-100);
     }
 
 };
