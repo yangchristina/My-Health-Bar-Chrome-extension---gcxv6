@@ -16,7 +16,7 @@ var s = function(sketch) {
     sketch.draw = function() {
 
         sketch.fill(colour);
-        sketch.rect(5, 100, 900, 1000, 20);
+        sketch.rect(50, 50, 100, 50, 20);
 
         // c = sketch.createCanvas(sketch.width, sketch.height);
         c.position(cX, cY);
