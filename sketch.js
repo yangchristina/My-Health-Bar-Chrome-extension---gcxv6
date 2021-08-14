@@ -13,7 +13,7 @@ var s = function(sketch) {
     sketch.preload = function() {
         let urlHeart = chrome.extension.getURL('assets/heart.png')
         imgHeart = sketch.loadImage(urlHeart);
-        let urlWater = chrome.extension.getURL('assets/w.png')
+        let urlWater = chrome.extension.getURL('assets/water.png')
         imgWater = sketch.loadImage(urlWater);
     }
     

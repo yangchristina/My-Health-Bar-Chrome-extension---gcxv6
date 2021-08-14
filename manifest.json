@@ -10,5 +10,11 @@
         "<all_urls>"
       ],
       "js": ["p5.js", "sketch.js"]
-    }]
+    }],
+    "background":{ 
+      "scripts": ["background.js"]
+    },
+    "broser_action": {
+      "default_icon": "assets/heart.png"
+    }
 }
