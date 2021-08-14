@@ -1,46 +1,51 @@
 var s = function(sketch) {
     let c
     let cX, cY
-    let colour = (255, 204, 0);
+    let col = 'rgb(50,150,50)';
+    let img;
+    let timeElapsed;
+    let width; 
+    let myHealth;
+    let windowHeight = window.innerHeight
 
+    width = 140; 
+
+    sketch.preload = function() {
+        
+        let url = chrome.extension.getURL('assets/heart.png')
+        img = sketch.loadImage(url);
+    }
+    
     sketch.setup = function() {
-        cY = 100
-        cX = 0
+        timeElapsed = 0
+        myHealth = 100
 
-        c = sketch.createCanvas(window.innerWidth, window.innerHeight);
-        c.position(cX, cY);
+        img.resize(50, 50)
+
+        c = sketch.createCanvas(window.innerWidth, windowHeight);
+        c.position(100, 0, 'fixed');
         c.style('pointer-events', 'none');
         c.style('z-index', '999');
     };
 
     sketch.draw = function() {
+        timeElapsed += sketch.deltaTime/1000
+        myHealth -= sketch.deltaTime*0.0000167
+        console.log(timeElapsed)
+        console.log("my health: "+ myHealth)
 
-        sketch.fill(colour);
-        sketch.rect(50, 50, 100, 50, 20);
+        sketch.image(img, 0, 0);
 
-        // c = sketch.createCanvas(sketch.width, sketch.height);
-        c.position(cX, cY);
+        //outer rectangle
+        sketch.fill(0,0,0);
+        sketch.rect(0, windowHeight-50, 150, 35, 20);
+
+        //inner rectangle
+        sketch.fill(col);
+        sketch.rect(5, windowHeight-50+3, 140, 29, 20);
+
         // sketch.background('green')
     };
-
-    sketch.mouseWheel = function(event) {
-        var body = document.body,
-        html = document.documentElement;
-
-        var heightPage = Math.max( body.scrollHeight, body.offsetHeight, 
-                       html.clientHeight, html.scrollHeight, html.offsetHeight );
-        // print(event.delta);
-        //move the square according to the vertical scroll amount
-        if(cY <0)
-            cY = 0
-        else if (cY > heightPage)
-            cY = heightPage
-        else
-            cY += event.delta;
-        //uncomment to block page scrolling
-        //return false;
-    };
-
 
 };
 
