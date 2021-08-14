@@ -4,14 +4,19 @@
 *   background scripts
 *   sign in page???
 */
+let col=150;
+// chrome.runtime.onMessage.addListener(gotMessage);
 
-chrome.runtime.onMessage.addListener(gotMessage);
+// function gotMessage(message, sender, sendResponse) {
+//     console.log(message.txt)
+//     col--
+//     console.log(col)
+// }
 
-function gotMessage(message, sender, sendResponse) {
-    console.log(message.txt)
-}
 
 var s = function(sketch) {
+    
+
     let c
     let col = 150;
     let imgHeart;
@@ -30,6 +35,7 @@ var s = function(sketch) {
     }
     
     sketch.setup = function() {
+        chrome.runtime.onMessage.addListener(sketch.gotMessage);
         
         timeElapsed = 0
         myHealth = 100
@@ -49,39 +55,47 @@ var s = function(sketch) {
     };
 
     sketch.draw = function() {
+        
+
         sketch.clear();
-        if(myHealth >=0){
-            timeElapsed += sketch.deltaTime/1000
-            myHealth -= sketch.deltaTime*0.0000167 * 500 //get rid of 500 for production
-            myHealthBar = myHealth/100 * fullHealth
-            console.log(timeElapsed)
-            console.log("my health: "+ myHealth)
-            if(col>0)
-                col = myHealth/100*180-30
-        }
-        sketch.HealthBar()
-        sketch.Water()
+        console.log(col)
+
+        // if(myHealth >=0){
+            // timeElapsed += sketch.deltaTime/1000
+            // myHealth -= sketch.deltaTime*0.0000167 * 500 //get rid of 500 for production
+            // myHealthBar = myHealth/100 * fullHealth
+            // console.log(timeElapsed)
+            // console.log("my health: "+ myHealth)
+        //     if(col>0)
+        //         col = myHealth/100*180-30
+        // }
+        // sketch.HealthBar()
+        // sketch.Water()
     };
+    sketch.gotMessage =function(message, sender, sendResponse) {
+        col--
+        // console.log(col)
+    }
     
-    sketch.HealthBar = function() {
-         //outer rectangle
-         sketch.fill(0,0,0);
+    // sketch.HealthBar = function() {
+    //      //outer rectangle
+    //      sketch.fill(0,0,0);
  
-         sketch.rect(60, windowHeight-45, 150, 30, 20);
+    //      sketch.rect(60, windowHeight-45, 150, 30, 20);
          
-         //inner rectangle
-         sketch.colorMode(sketch.HSB)
-         sketch.fill(col, 100, 100);
-         sketch.rect(60+3, windowHeight-45+3, myHealthBar, 24, 20);
+    //      //inner rectangle
+    //      sketch.colorMode(sketch.HSB)
+    //      sketch.fill(col, 100, 100);
+    //      sketch.rect(60+3, windowHeight-45+3, myHealthBar, 24, 20);
          
-         //heart
-         sketch.image(imgHeart, 5,  windowHeight-57);
-         sketch.fill('white')
-         sketch.text(Math.floor(myHealth+1)+'%', 34, windowHeight-30);
-    }
-    sketch.Water = function(){
-        sketch.image(imgWater, 50,  windowHeight-100);
-    }
+    //      //heart
+    //      sketch.image(imgHeart, 5,  windowHeight-57);
+    //      sketch.fill('white')
+    //      sketch.text(Math.floor(myHealth+1)+'%', 34, windowHeight-30);
+    // }
+    // sketch.Water = function(){
+    //     sketch.image(imgWater, 50,  windowHeight-100);
+    // }
 
 };
 

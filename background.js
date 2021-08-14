@@ -11,8 +11,6 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     helloWorld();
 });
 
-
-
 function helloWorld(tab) {
     let msg = {
         txt: "hello"
