@@ -1,51 +1,70 @@
 var s = function(sketch) {
     let c
     let cX, cY
-    let col = 'rgb(50,150,50)';
-    let img;
+    let col = 150;
+    let imgHeart;
+    let imgWater;
     let timeElapsed;
-    let width; 
     let myHealth;
     let windowHeight = window.innerHeight
 
-    width = 140; 
+    
 
     sketch.preload = function() {
-        
-        let url = chrome.extension.getURL('assets/heart.png')
-        img = sketch.loadImage(url);
+        let urlHeart = chrome.extension.getURL('assets/heart.png')
+        imgHeart = sketch.loadImage(urlHeart);
+        let urlWater = chrome.extension.getURL('assets/w.png')
+        imgWater = sketch.loadImage(urlWater);
     }
     
     sketch.setup = function() {
+        
         timeElapsed = 0
         myHealth = 100
+        fullHealth = 144
 
-        img.resize(50, 50)
+        imgHeart.resize(55, 55)
 
         c = sketch.createCanvas(window.innerWidth, windowHeight);
-        c.position(100, 0, 'fixed');
+        c.position(0, 0, 'fixed');
         c.style('pointer-events', 'none');
         c.style('z-index', '999');
+
+        sketch.textFont('inconsolata');
+        sketch.textSize(sketch.width / 80);
+        sketch.textAlign(sketch.CENTER, sketch.CENTER);
     };
 
     sketch.draw = function() {
-        timeElapsed += sketch.deltaTime/1000
-        myHealth -= sketch.deltaTime*0.0000167
-        console.log(timeElapsed)
-        console.log("my health: "+ myHealth)
-
-        sketch.image(img, 0, 0);
-
-        //outer rectangle
-        sketch.fill(0,0,0);
-        sketch.rect(0, windowHeight-50, 150, 35, 20);
-
-        //inner rectangle
-        sketch.fill(col);
-        sketch.rect(5, windowHeight-50+3, 140, 29, 20);
-
-        // sketch.background('green')
+        sketch.clear();
+        if(myHealth >=0){
+            timeElapsed += sketch.deltaTime/1000
+            myHealth -= sketch.deltaTime*0.0000167 * 500 //get rid of 500 for production
+            myHealthBar = myHealth/100 * fullHealth
+            console.log(timeElapsed)
+            console.log("my health: "+ myHealth)
+            if(col>0)
+                col = myHealth/100*180-30
+        }
+        sketch.HealthBar()
     };
+    
+    sketch.HealthBar = function() {
+         //outer rectangle
+         sketch.fill(0,0,0);
+ 
+         sketch.rect(60, windowHeight-45, 150, 30, 20);
+         
+         //inner rectangle
+         sketch.colorMode(sketch.HSB)
+         sketch.fill(col, 100, 100);
+         sketch.rect(60+3, windowHeight-45+3, myHealthBar, 24, 20);
+         
+         //heart
+         sketch.image(imgHeart, 5,  windowHeight-57);
+         sketch.fill('white')
+         sketch.text(Math.floor(myHealth+1)+'%', 34, windowHeight-30);
+    }
 
 };
 
