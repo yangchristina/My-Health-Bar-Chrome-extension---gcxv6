@@ -1,3 +1,16 @@
+/* todos
+*   percent in heart stop at 0%
+*   warning flashing lights
+*   background scripts
+*   sign in page???
+*/
+
+chrome.runtime.onMessage.addListener(gotMessage);
+
+function gotMessage(message, sender, sendResponse) {
+    console.log(message.txt)
+}
+
 var s = function(sketch) {
     let c
     let col = 150;

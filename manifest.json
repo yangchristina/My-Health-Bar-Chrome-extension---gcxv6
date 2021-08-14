@@ -14,7 +14,7 @@
     "background":{ 
       "scripts": ["background.js"]
     },
-    "broser_action": {
+    "browser_action": {
       "default_icon": "assets/heart.png"
     }
 }
