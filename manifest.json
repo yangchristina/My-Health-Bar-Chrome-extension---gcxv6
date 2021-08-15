@@ -13,7 +13,7 @@
       "js": ["p5.js", "sketch.js"]
     }],
     "background":{ 
-      "scripts": ["p5.js", "background.js"],
+      "scripts": ["background.js"],
       "persistent": false
     },
     "browser_action": {
