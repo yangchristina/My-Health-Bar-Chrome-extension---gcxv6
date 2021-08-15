@@ -13,7 +13,7 @@ var s = function(sketch) {
     let imgWater;
     let imgPark;
     let myHealth;
-    let windowHeight = window.innerHeight 
+    let windowHeight = sketch.windowHeight
     let healthX=60; let healthY = windowHeight-45; 
     let value = 0
     let showIcons = false
@@ -46,7 +46,7 @@ var s = function(sketch) {
         imgWater.resize(55, 70)
         imgPark.resize(55, 55)
 
-        c = sketch.createCanvas(window.innerWidth, windowHeight);
+        c = sketch.createCanvas(sketch.windowWidth,sketch.windowHeight);
         c.position(0, 0, 'fixed');
         c.style('pointer-events', 'none');
         c.style('z-index', '999');
