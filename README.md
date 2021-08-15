@@ -19,4 +19,5 @@ My Health Bar is a chrome extension created to help users limit their screen tim
 
 ![alt text](https://media.discordapp.net/attachments/875473801461268510/876275373275496479/warning_low_health.gif)
 * Users can also increase their 'health' by taking a walk outside and drinking water.
+![alt text](https://cdn.discordapp.com/attachments/875473801461268510/876309753368817694/ezgif.com-gif-maker.gif)
 * clicking on the park icon will redirect you to a new google maps tab of parks near you
