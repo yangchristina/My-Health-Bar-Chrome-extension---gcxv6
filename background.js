@@ -37,9 +37,9 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     chrome.idle.queryState(60, function(newState) {
         if(newState =="active")
             if(health>0)
-                health-= 5
-        else{
-            health+=5 * healthRate
+                health-= 1.67
+        else if(newState =="idle" || newState =="lock"){
+            health+=1.67 * healthRate
             if(health>100) health=100
         }console.log(newState)
         sendHealth();
@@ -50,8 +50,8 @@ function sendHealth() {
     let msg = {
         myHealth: health
     }
-    // chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        chrome.tabs.sendMessage(activeTab, msg);  
-    // });
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        chrome.tabs.sendMessage(tabs[0].id, msg);  
+    });
     console.log("Hello, world!: "+health);
 }
