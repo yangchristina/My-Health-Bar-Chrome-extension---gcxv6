@@ -16,6 +16,6 @@ My Health Bar is a chrome extension created to help users limit their screen tim
 * A health bar at the bottom of your screen, displaying the amount of screentime you have left. 
 * As a user continues to use their device, the health bar slowly depletes and changes colour (green to yellow to red) to indicate the amount of time they have left. 
 * Once the user reaches their screen time limit (empty health bar), My Health Bar will display a flashing warning, reminding the user to take a break. 
-* ![alt text](https://media.discordapp.net/attachments/875473801461268510/876275373275496479/warning_low_health.gif)
+![alt text](https://media.discordapp.net/attachments/875473801461268510/876275373275496479/warning_low_health.gif)
 * Users can also increase their 'health' by taking a walk outside and drinking water.
 * clicking on the park icon will redirect you to a new google maps tab of parks near you
