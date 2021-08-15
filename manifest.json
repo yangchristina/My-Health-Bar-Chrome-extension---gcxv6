@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "p5 sketch2",
+    "name": "My Health Bar",
     "version": "0.1",
     "permissions": ["background", "alarms", "idle"],
     "web_accessible_resources": [
